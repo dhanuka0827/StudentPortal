@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "STUDENT")
+@Table(name = "STUDENTS")
 @Data
 @NoArgsConstructor
 public class Student {
@@ -24,7 +24,7 @@ public class Student {
     @Column
     public String dob;
 
-    @Column
+   /* @Column
     public List<String> subjects;
-
+*/
 }

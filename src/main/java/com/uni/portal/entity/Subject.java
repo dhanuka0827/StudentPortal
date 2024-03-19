@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "SUBJECT")
+@Table(name = "SUBJECTS")
 @Data
 @NoArgsConstructor
 public class Subject {
