@@ -5,7 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,18 +15,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Student {
 
-    @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+	@Id
+	@Column
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public int id;
 
-    @Column
-    public String name;
+	@Column
+	public String name;
 
-    @Column
-    public String dob;
+	@Column
+	public String dob;
 
-   /* @Column
-    public List<String> subjects;
-*/
+	/*
+	 * @Column public List<String> subjects;
+	 */
 }
