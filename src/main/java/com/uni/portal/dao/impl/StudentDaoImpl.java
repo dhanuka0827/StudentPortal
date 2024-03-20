@@ -19,7 +19,13 @@ public class StudentDaoImpl implements StudentDao {
     
     @Override
     public List<Student> getStudentDetails() {
-    	TypedQuery<Student> query = entityManager.createQuery("SELECT s FROM Student s", Student.class);
+    	TypedQuery<Student> query = entityManager.createQuery("SELECT t FROM Student t", Student.class);
         return query.getResultList();
     }
 }
+/*
+ * Session session=sessionFactory.openSession();
+    	session.beginTransaction();
+    	Student stud=new Student();
+    	session.load(stud, id);
+ */
