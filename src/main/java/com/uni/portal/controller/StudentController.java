@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/student")
+@RestController
+@RequestMapping("student")
 public class StudentController {
 
     Logger logger = LoggerFactory.getLogger(StudentController.class);
@@ -23,7 +24,7 @@ public class StudentController {
         service.save(student);
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping(value = "/get/{id}", produces = "application/json")
     public Student getStudent(@PathVariable int id){
         logger.info("Getting student with id : ", id);
         return service.getById(id);
