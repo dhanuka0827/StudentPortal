@@ -1,22 +1,25 @@
 package com.uni.portal.dao.impl;
 
-import com.uni.portal.dao.StudentDao;
-import com.uni.portal.entity.Student;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import org.hibernate.Session;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import com.uni.portal.dao.StudentDao;
+import com.uni.portal.entity.Student;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 
 @Repository
 public class StudentDaoImpl implements StudentDao {
 
     @PersistenceContext
     private EntityManager entityManager;
+    
     @Override
     public List<Student> getStudentDetails() {
-
-        return null;
+    	TypedQuery<Student> query = entityManager.createQuery("SELECT s FROM Student s", Student.class);
+        return query.getResultList();
     }
 }

@@ -30,9 +30,15 @@ public class StudentController {
         return service.getById(id);
     }
 
-    @GetMapping("/getAll")
-    public List<Student> getAllStudents(){
-        logger.info("Getting all students");
-        return service.getAll();
-    }
+	@GetMapping("/getALLByQuery/{id}")
+	public List<Student> getALLByQuery() {
+		logger.info("Loading student from query");
+		return service.getByQuery();
+	}
+
+	@GetMapping("/getAll")
+	public List<Student> getAllStudents() {
+		logger.info("Getting all students");
+		return service.getAll();
+	}
 }
