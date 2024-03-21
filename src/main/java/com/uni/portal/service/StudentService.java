@@ -14,7 +14,7 @@ public class StudentService {
 
 	@Autowired
 	StudentRepository studentRepository;
-	
+
 	@Autowired
 	StudentDaoImpl studentDaoImpl;
 
@@ -28,6 +28,10 @@ public class StudentService {
 
 	public List<Student> getByQuery() {
 		return studentDaoImpl.getStudentDetails();
+	}
+
+	public Student getByLoadMethod(int id) {
+		return studentDaoImpl.loadStudent(id);
 	}
 
 	public List<Student> getAll() {
