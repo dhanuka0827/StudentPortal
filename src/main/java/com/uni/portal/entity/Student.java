@@ -1,14 +1,10 @@
 package com.uni.portal.entity;
 
+import java.io.Serializable;
 import java.util.Set;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,7 +12,10 @@ import lombok.NoArgsConstructor;
 @Table(name = "STUDENTS")
 @Data
 @NoArgsConstructor
-public class Student {
+@AllArgsConstructor
+public class Student implements Serializable {
+
+	private static final long serialVersionUID = 4492831588166218765L;
 
 	@Id
 	@Column
@@ -29,7 +28,11 @@ public class Student {
 	@Column
 	public String dob;
 
-	@OneToMany(mappedBy="student")
+	//@OneToMany(mappedBy="student", cascade = CascadeType.PERSIST)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "student_subject",
+			joinColumns = {@JoinColumn(name = "student_id")},
+			inverseJoinColumns = {@JoinColumn(name = "subject_id")})
     private Set<Subject> subjects;
 	/*
 	 * @Column public List<String> subjects;

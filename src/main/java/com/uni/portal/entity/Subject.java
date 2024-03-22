@@ -1,21 +1,21 @@
 package com.uni.portal.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "SUBJECTS")
 @Data
 @NoArgsConstructor
-public class Subject {
+@AllArgsConstructor
+public class Subject implements Serializable {
+
+	private static final long serialVersionUID = -9192768386210003960L;
 
 	@Id
 	@Column
@@ -28,7 +28,8 @@ public class Subject {
 	@Column
 	public String teacher;
 	
-	@ManyToOne
-    @JoinColumn(name="stud_id" /*,nullable=false*/)
-    private Student student;
+	//@ManyToOne
+    //@JoinColumn(name="stud_id" /*,nullable=false*/)
+	@ManyToMany(mappedBy = "subjects")
+    private Set<Student> student;
 }
